@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from datetime import datetime 
 from django.template import Template, Context
+from django.template import loader
 
 def saludo(request):
     return HttpResponse("Hola Django, en Coder.")
@@ -20,16 +21,30 @@ def apellido(request, ape):
     return HttpResponse(f'El profe de Python {ape} es crack. <br><br> Ah, y hoy es {fecha}')
 
 def probandoTemplate(request):
-     #LAS BARRAS TIENEN QUE SER " / " 
+     
+
+    mejorEstudiante = "Alberto Nisman"
+
+    nota = 8.9
+
+    fecha = datetime.now()
+
+    estudiantesPiolas = ["Juan", "Pedro", "Lucas"]
     
-    miHTML = open("C:/Users/Osuna/Desktop/proyecto23850/Proyecto1/Proyecto1/templates/template1.html")
+    dicc = {"nombre":mejorEstudiante,"nota":nota,"fecha":fecha, "estudiantes":estudiantesPiolas}
     
-    plantilla = Template(miHTML.read())
+    template = loader.get_template("template1.html")
+    
+    #miHTML = open("C:/Users/Osuna/Desktop/proyecto23850/Proyecto1/Proyecto1/templates/template1.html")
+    
+    #plantilla = Template(miHTML.read())
 
-    miHTML.close() 
+    #miHTML.close() 
 
-    miContexto = Context() #datos que envío a mi web.
+    #miContexto = Context(dicc) #datos que envío a mi web.
 
-    documento = plantilla.render(miContexto)
+    #documento = plantilla.render(miContexto)
+
+    documento = template.render(dicc)
 
     return HttpResponse(documento)

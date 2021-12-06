@@ -5,16 +5,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GRAN CLASE</title>
+   
 </head>
 
 
 
 <body>
+    <!--Qué bardo comentar así:-->
+<p>Hoy es {{fecha}}</p>
 <h1>NICO</h1>
-<h2>PÉREZ</h2>
+<h2>PEREZ</h2>
 
 <p>EL PROFE</p>
 
+<h2 style="color: blue;"> El mejor es: {{nombre}} </h2>
+<h2>La nota es: {{nota}} </h2>
+
+<h1>Los piolas:</h1><br>
+
+{% for estu in estudiantes %}
+    <p>{{estu}}</p>
+
+    {% if estu == 'Lucas' %}
+    
+     <p style="color: red;">{{estu}}</p>
+
+    {% else %}
+      <p>{{estu}}</p>
+    
+    {% endif %}
+
+{% endfor %}
 
     
 </body>
