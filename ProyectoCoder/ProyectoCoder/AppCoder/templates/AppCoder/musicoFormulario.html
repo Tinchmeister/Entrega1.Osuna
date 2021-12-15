@@ -1,0 +1,40 @@
+{% extends "AppCoder/padre.html" %}
+
+{% load static %}
+
+{% block contenido2 %}
+
+ <h1 class="mx-auto my-0 text-uppercase">Músico</h1>
+
+{% endblock %}
+
+{% block contenido %}
+    
+    {% if miformulario.errors %}
+    
+    <p>Error.</p>
+    
+    {% endif %}
+
+    <h1>¿Eres músico buscando banda?</h1>
+
+    <p>¡Completa el formulario y te contactaremos a la brevedad con novedades!</p>
+
+    <form action="/AppCoder/musicoFormulario" method="POST"> {% csrf_token %}
+
+        <table>
+            
+            {{ miFormulario.as_table }}
+
+        </table>
+
+        <input type="submit" value="Enviar">
+
+
+
+
+    </form>
+
+
+
+{% endblock %}
