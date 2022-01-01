@@ -29,12 +29,3 @@ class Contacto(models.Model):
     numero = models.IntegerField()
     mail = models.CharField(max_length=40)
 
-
-
-
-
-
-
-
-   
-

@@ -1,0 +1,25 @@
+{% extends "AppCoder/padre.html" %}
+
+{% load static %}
+
+{% block contenido2 %}
+
+ <h1 class="mx-auto my-0 text-uppercase">Bienvenido <p style="color:red">{{mensaje}}</p></h1>
+ <a class="btn btn-secondary" href="{% url 'EditarPerfil' %}">Editar Perfil</a>
+ <a class="btn btn-secondary" href="{% url 'Logout' %}">Cerrar Sesión</a>
+ 
+
+{% endblock %}
+
+{% block contenido %}
+
+<h1>Navega tranquilo.</h1>
+
+<p>Eso, master.</p>
+
+{% endblock %}
+
+
+
+    
+
