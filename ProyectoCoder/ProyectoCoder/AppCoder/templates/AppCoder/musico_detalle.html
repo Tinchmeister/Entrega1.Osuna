@@ -1,0 +1,19 @@
+{% extends "AppCoder/padre.html" %}
+
+{% load static %}
+
+{% block contenido2 %}
+
+ <h1 class="mx-auto my-0 text-uppercase">Detalles de los Músicos</h1>
+
+{% endblock %}
+
+{% block contenido %}
+
+<p> Nombre: <i>{{musico.nombre}}</i></p>
+<p> Apellido: <i>{{musico.apellido}}</i></p>
+<p> Fecha de Nacimiento: <i>{{musico.fechaNacimiento}}</i></p>
+<p> Instrumento(s) que toca: <i>{{musico.instrumento}}</i></p>
+<p> ¿Es novato? <i>{{musico.esNovato}}</i></p>
+
+{% endblock %}

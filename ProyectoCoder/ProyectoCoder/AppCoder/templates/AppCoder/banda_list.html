@@ -5,13 +5,39 @@
 {% block contenido2 %}
 
  <h1 class="mx-auto my-0 text-uppercase">Lista de Bandas</h1>
+ 
 
 {% endblock %}
 
 {% block contenido %}
 
-<h1>Este es el inicio.</h1>
 
-<p>Párrafo de inicio.</p>
+<ul>
+    
+    {% for banda in object_list %}
+    <li>
+        
+        
+        <p>NOMBRE: {{banda.nombre}}</p>
+
+        
+        <a href="{% url 'Detail' banda.id %}">Ver más</a>
+        <a href="{% url 'Edit' banda.id %}">Editar</a>
+        <a href="{% url 'Delete' banda.id %}">Borrar</a>
+
+    </li>
+    
+    
+    {% endfor %}
+    
+</ul>
 
 {% endblock %}
+
+{% block edit %}
+<a class="btn btn-secondary" href="{% url 'BandasBusqueda' %}">Buscar Banda</a>
+<a class="btn btn-secondary" href="{% url 'New' %}">Nueva Banda</a>
+
+{% endblock %}
+
+    

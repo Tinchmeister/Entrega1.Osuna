@@ -1,0 +1,23 @@
+{% extends "AppCoder/padre.html" %}
+
+{% load static %}
+
+{% block contenido2 %}
+
+ <h1 class="mx-auto my-0 text-uppercase">Borrar Músico(s)</h1>
+
+{% endblock %}
+
+{% block contenido %}
+
+    <form method="post">
+
+        
+        {% csrf_token %}
+        ¿Estás seguro que desea eliminar {{ object.nombre }}?
+        <input type="submit" value="Enviar" />
+
+
+    </form>
+
+{% endblock %}

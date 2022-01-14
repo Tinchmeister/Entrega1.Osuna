@@ -4,9 +4,12 @@ from django.http import HttpResponse
 from AppCoder.forms import *
 from AppCoder.models import *
 from django.views.generic import ListView 
+from django.views.generic.detail import DetailView 
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
+
 
 
 # Create your views here.
@@ -18,6 +21,77 @@ class BandaList(ListView):
 
     model = Banda
     template_name = "AppCoder/banda_list.html"
+
+#Ver más (PIJA AHRe)
+
+class BandaDetalle(DetailView):
+
+    model = Banda
+    template_name = "AppCoder/banda_detalle.html"
+
+#Crear
+
+class BandaCreacion(CreateView):
+
+    model = Banda
+    success_url = "../AppCoder/banda/list"
+    fields = ["nombre", "generoMusical", "instrumentoBuscado"]
+
+#Modificar
+
+class BandaUpdate(UpdateView):
+
+    model = Banda
+    success_url = "../banda/list"
+    fields = ["nombre", "generoMusical", "instrumentoBuscado"]
+
+#DELET DIS
+
+class BandaDelete(DeleteView):
+
+    model = Banda
+    success_url = "../banda/list"
+
+
+
+class MusicoList(ListView):
+
+    model = Musico
+    template_name = "AppCoder/musico_list.html"
+
+
+
+class MusicoDetalle(DetailView):
+
+    model = Musico
+    template_name = "AppCoder/musico_detalle.html"
+
+
+
+class MusicoCreacion(CreateView):
+
+    model = Musico
+    success_url = "../AppCoder/musico/list"
+    fields = ["nombre", "apellido", "fechaNacimiento", "instrumento", "esNovato"]
+
+
+
+class MusicoUpdate(UpdateView):
+
+    model = Musico
+    success_url = "../musico/list"
+    fields = ["nombre", "apellido", "fechaNacimiento", "instrumento", "esNovato"]
+
+
+
+class MusicoDelete(DeleteView):
+
+    model = Musico
+    success_url = "../musico/list"
+
+
+
+
 
 
 def inicio(request):
@@ -156,7 +230,7 @@ def login_request(request):
 
                 login(request, user)
 
-                return render(request, "AppCoder/inicioLogin.html", {"mensaje":f"{usuario}"})
+                return render(request, "AppCoder/inicio.html", {"mensaje":f"{usuario}"})
             
             else:
 
@@ -186,7 +260,7 @@ def register(request):
 
             form.save()
 
-            return render(request, "AppCoder/inicioLogin.html", {"mensaje": f"{username} Creado"})
+            return render(request, "AppCoder/inicio.html", {"mensaje": f"{username} Creado"})
 
     else:
 
@@ -223,9 +297,18 @@ def editarPerfil(request):
     
     return render(request, "AppCoder/editarPerfil.html", {"miFormulario":miFormulario, "usuario":usuario})
 
-@login_required
-def inicioLogin(request):
+def bandasBusqueda(request):
+    return render(request, 'AppCoder/bandasBusqueda.html')
 
-    #return HttpResponse("Prueba de inicio")
-    return render(request, 'AppCoder/inicioLogin.html')
+
+def bandasBusquedaResultado(request):
+    if request.GET["nombre"]:
+        nombre = request.GET["nombre"]
+        banda = Banda.objects.filter(nombre__icontains=nombre)
+        return render(request, 'AppCoder/bandasBusquedaResultado.html', {"banda":banda, "nombre":nombre})
+    else:
+        output = f"ERROR: No se ingresó ningún nombre de una banda"
+    return HttpResponse(output)
+
+
 

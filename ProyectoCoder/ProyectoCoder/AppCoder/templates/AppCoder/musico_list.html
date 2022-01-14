@@ -1,0 +1,43 @@
+{% extends "AppCoder/padre.html" %}
+
+{% load static %}
+
+{% block contenido2 %}
+
+ <h1 class="mx-auto my-0 text-uppercase">Lista de Músicos</h1>
+ 
+
+{% endblock %}
+
+{% block contenido %}
+
+
+<ul>
+    
+    {% for musico in object_list %}
+    <li>
+        
+        
+        <p>{{musico.nombre}} {{musico.apellido}}</p>
+
+        
+        <a href="{% url 'MusicoDetail' musico.id %}">Más info</a>
+        <a href="{% url 'MusicoEdit' musico.id %}">Editar</a>
+        <a href="{% url 'MusicoDelete' musico.id %}">Borrar</a>
+
+    </li>
+    
+    
+    {% endfor %}
+    
+</ul>
+
+{% endblock %}
+
+{% block edit %}
+<a class="btn btn-secondary" href="{% url 'MusicoNew' %}">Nuevo Músico</a>
+
+
+{% endblock %}
+
+    

@@ -1,0 +1,26 @@
+{% extends "AppCoder/padre.html" %}
+
+{% load static %}
+
+{% block contenido2 %}
+
+ <h1 class="mx-auto my-0 text-uppercase">Buscar Bandas Resultado</h1>
+ 
+    <a class="btn btn-secondary" href="{% url 'List' %}">Volver a Bandas</a>
+
+{% endblock %}
+
+{% block contenido %}
+
+{% if banda %}
+<ul>
+    {% for x in banda %}
+        <li>{{x}}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<!-- Boton-->
+<br><a class="btn btn-secondary" href="{% url 'New' %}">Crear Nueva Banda</a>
+
+{% endblock %}

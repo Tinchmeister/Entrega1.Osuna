@@ -1,0 +1,17 @@
+{% extends "AppCoder/padre.html" %}
+
+{% load static %}
+
+{% block contenido2 %}
+
+ <h1 class="mx-auto my-0 text-uppercase">Detalles de Bandas</h1>
+
+{% endblock %}
+
+{% block contenido %}
+
+<p> Nombre: <i>{{banda.nombre}}</i></p>
+<p> Género: <i>{{banda.generoMusical}}</i></p>
+<p> Instrumento(s) que busca: <i>{{banda.instrumentoBuscado}}</i></p>
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "AppCoder/padre.html" %}
+
+{% load static %}
+
+{% block contenido2 %}
+
+ <h1 class="mx-auto my-0 text-uppercase">Buscar Bandas</h1>
+ 
+    <a class="btn btn-secondary" href="{% url 'List' %}">Volver a Bandas</a>
+
+{% endblock %}
+
+{% block contenido %}
+
+<form action="/AppCoder/bandasBusquedaResultado/" method="GET">
+   <input type="text" name="nombre">
+   <input type="submit" value="Buscar">
+</form>
+</div>
+
+{% endblock %}
